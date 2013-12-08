@@ -10,9 +10,8 @@
  *
  *= require bootstrap.min
  *= require bootstrap-theme.min 
- *= require datepicker 
+ 
  *= require_self
- *= require jquery.ui.all
  *= require_tree .
  */
 body {
