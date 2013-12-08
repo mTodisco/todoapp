@@ -5,9 +5,10 @@
   </p>
 <% end %>
 <%= link_to 'New Task', new_task_path, class: "btn btn-success btn-sm" %>
-<h2>Todo</h2>
+<h2>Todo (<%= pluralize(@todo.count, "Task") %>, <%= pluralize(@todo.sum("duration"), "Hour") %>)</h2>
 <%= render partial: "table", locals: {tasks: @todo} %>
-<h2>Done</h2>
+<h2>Done (<%= pluralize(@done.count, "Task") %>, <%= pluralize(@done.sum("duration"), "Hour") %>)</h2>
+
 <%= render partial: "table", locals: {tasks: @done} %>
 <br>
 
