@@ -116,7 +116,7 @@ PLATFORMS
 DEPENDENCIES
   coffee-rails (~> 4.0.0)
   jbuilder (~> 1.2)
-  jquery-rails (~> 2.3.0)
+  jquery-rails
   pg
   rails (= 4.0.0)
   rails_12factor
