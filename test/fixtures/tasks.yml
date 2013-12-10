@@ -2,12 +2,14 @@
 
 one:
   name: MyString
-  deadline: 2013-12-08
+  deadline: 2013-11-28
   done: false
   duration: 1.5
+  user_id: 1
 
 two:
   name: MyString
-  deadline: 2013-12-08
+  deadline: 2013-11-28
   done: false
   duration: 1.5
+  user_id: 1
