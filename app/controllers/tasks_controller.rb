@@ -70,13 +70,13 @@ end
     # Use callbacks to share common setup or constraints between actions.
     def set_task
       @task = Task.find(params[:id])
-      if @task.user_id != current_user.id
+      if @task.user_id != current_user.id && @task.delegated_id != current_user.id
   redirect_to tasks_url, alert: 'You can edit only your own Tasks.'
 end
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def task_params
-      params.require(:task).permit(:name, :deadline, :done, :duration)
+      params.require(:task).permit(:name, :deadline, :done, :duration, :delegated_id)
     end
 end
