@@ -18,7 +18,6 @@ end
  assert_response :success
  assert_not_nil assigns(:done)
  assert_not_nil assigns(:todo)
-
 end
 
   test "should get new" do
