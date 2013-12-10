@@ -30,7 +30,11 @@
   <% end %>
 </td>
         <td class="<%= css_class %>"><%= link_to task.name, edit_task_path(task) %></td>
-        <td><%= task.deadline %></td>
+        <td>
+      <%= "in " if !task.is_delayed? %> 
+      <%= pluralize(task.distance_from_now_in_days.abs, "Day")  %>
+      <%= " ago " if task.is_delayed? %> 
+    </td>
         <td><%= task.duration %></td>
         <td><%= link_to 'Destroy', task, class: "btn btn-danger btn-sm", method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
