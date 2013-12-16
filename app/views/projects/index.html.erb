@@ -1,0 +1,15 @@
+<%= link_to 'New Project', new_project_path, id: "new_link", remote: true, :class => "btn btn-success  btn-sm" %>
+
+<h2>Projects</h2>
+
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <%= render @projects %>
+  </tbody>
+</table>

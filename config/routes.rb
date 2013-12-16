@@ -1,4 +1,5 @@
 Todoapp::Application.routes.draw do
+  resources :projects, except: [:show]
   devise_for :users
    resources :tasks, except: [:show]
 
