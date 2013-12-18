@@ -8,7 +8,9 @@ class ProjectsController < ApplicationController
   end
   def create
     @project = Project.new(project_params)
-    @project.save
+    if !@project.save
+      render action: 'error'
+    end
   end
   private
   def project_params
