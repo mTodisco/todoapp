@@ -14,4 +14,10 @@ end
     assert_response :success
   end
 
+test "should get new" do
+  sign_in @user
+  xhr :get, :new
+  assert_response :success
+end
+
 end
