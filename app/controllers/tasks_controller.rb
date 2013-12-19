@@ -33,7 +33,7 @@ end
 
     respond_to do |format|
       if @task.save
-        format.html { redirect_to tasks_url, notice: 'Task was successfully created.' }
+        format.html { redirect_to tasks_url, notice: 'Aufgabe wurde erfolgreich erstellt.' }
         format.json { render action: 'show', status: :created, location: @task }
       else
         format.html { render action: 'new' }
@@ -47,7 +47,7 @@ end
   def update
     respond_to do |format|
       if @task.update(task_params)
-        format.html { redirect_to tasks_url, notice: 'Task was successfully updated.' }
+        format.html { redirect_to tasks_url, notice: 'Aufgabe wurde erfolgreich aktualisiert.' }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }
@@ -71,7 +71,7 @@ end
     def set_task
       @task = Task.find(params[:id])
       if @task.user_id != current_user.id && @task.delegated_id != current_user.id
-  redirect_to tasks_url, alert: 'You can edit only your own Tasks.'
+  redirect_to tasks_url, alert: 'Du kannst nur deine eigenen Aufgaben bearbeiten.'
 end
     end
 

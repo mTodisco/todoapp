@@ -3,7 +3,15 @@
   <% if @task.errors.any? %>
     <div class="panel panel-danger">
       <div class="panel-heading">
-        <h3 class="panel-title"><%= pluralize(@task.errors.count, "error") %> prohibited this task from being saved:</h3>
+        <h3 class="panel-title">
+          <% var = @task.errors.count %>
+          <%=var %> Fehler 
+          <% if var >1%>
+          müssen
+          <% else %>
+          muss
+          <% end %>
+           korrigiert werden:</h3>
       </div>
       <div class="panel-body">
         <ul>
@@ -17,30 +25,30 @@
 
   <div class="checkbox">
     <label>
-      <%= f.check_box :done %> <%= f.label :done %>
+      <%= f.check_box :done %> <%= f.label :done, "Erledigt" %>
     </label>
   </div>
   <div class="form-group">
     <%= f.label :name %><br>
-    <%= f.text_field :name, class: "form-control", placeholder: "Name of Task" %>
+    <%= f.text_field :name, class: "form-control", placeholder: "Name der Aufgabe" %>
   </div>
   <div class="form-group">
-  <%= f.label :delegated_id %><br>
+  <%= f.label :delegated_id, "Aufgabe übertragen an" %><br>
   <%= f.select :delegated_id, User.all.collect {|u| [ u.username, u.id ] }, { :include_blank => true, :selected => @task.delegated_id}, class: "form-control" %>
 </div>  
   <div class="form-group">
-    <%= f.label :deadline %><br>
-    <%= f.date_field :deadline, class: "form-control", placeholder: "Deadline of Task" %>
+    <%= f.label :deadline, "Fällig am" %><br>
+    <%= f.date_field :deadline, class: "form-control", placeholder: "Fälligkeit der Aufgabe" %>
   </div>
   <div class="form-group">
-    <%= f.label :duration %><br>
-    <%= f.text_field :duration, class: "form-control", placeholder: "Duration of Task" %>
+    <%= f.label :duration, "Dauer in Stunden" %><br>
+    <%= f.text_field :duration, class: "form-control", placeholder: "Dauer der Aufgabe" %>
   </div>
     <div class="form-group">
-      <%= f.label :project_id %><br>
+      <%= f.label :project_id, "Projekt" %><br>
       <%= f.select :project_id, Project.all.collect {|p| [ p.name, p.id ] }, { :include_blank => true, :selected => @task.project_id}, class: "form-control" %>
     </div>
   <div class="actions">
-    <%= f.submit "Save Task", class: "btn btn-primary" %>  <%= link_to 'Cancel', tasks_path, class: "btn btn-default" %>
+    <%= f.submit "Aufgabe speichern", class: "btn btn-primary" %>  <%= link_to 'Abbrechen', tasks_path, class: "btn btn-default" %>
   </div>    
 <% end %>

@@ -3,21 +3,21 @@
     <tr>
       <th></th>
       <th>Name</th>
-      <th>Project</th>
-      <th>Created</th>
-      <th>Delegated</th>
+      <th>Projekt</th>
+      <th>Erstellt von</th>
+      <th>Übertragen an</th>
       <th>
 <% if params[:sorting] == "deadline" %>
   Deadline ^
 <% else %>
-  <%= link_to "Deadline", tasks_path(sorting: "deadline") %>
+  <%= link_to "Fällig", tasks_path(sorting: "deadline") %>
 <% end %>
 </th>
       <th>
 <% if params[:sorting] == "duration" %>
   Duration ^
 <% else %>
-  <%= link_to "Duration", tasks_path(sorting: "duration") %>
+  <%= link_to "Dauer in Std.", tasks_path(sorting: "duration") %>
 <% end %> 
 </th>
       <th></th>
@@ -39,11 +39,19 @@
         <td> <%= task.delegated.username if task.delegated %> </td>
         <td>
       <%= "in " if !task.is_delayed? %> 
-      <%= pluralize(task.distance_from_now_in_days.abs, "Day")  %>
-      <%= " ago " if task.is_delayed? %> 
+      <% tage = task.distance_from_now_in_days.abs %>
+      <%= tage %>
+      <% if tage > 1%>
+      <%= " Tagen" if !task.is_delayed? %> 
+      <%= " Tage " if task.is_delayed? %> 
+      
+      <%else%>
+      Tag
+      <%end%>
+      <%= "her " if task.is_delayed? %> 
     </td>
         <td><%= task.duration %></td>
-        <td><%= link_to 'Destroy', task, class: "btn btn-danger btn-sm", method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Löschen', task, class: "btn btn-danger btn-sm", method: :delete, data: { confirm: 'Bist du dir sicher?' } %></td>
       </tr>
     <% end %>
   </tbody>

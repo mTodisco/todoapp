@@ -1,7 +1,39 @@
-<%= link_to 'New Task', new_task_path, class: "btn btn-success btn-sm" %>
-<h2>Todo (<%= pluralize(@todo.count, "Task") %>, <%= pluralize(@todo.sum("duration"), "Hour") %>)</h2>
+<%= link_to 'Neue Aufgabe', new_task_path, class: "btn btn-success btn-sm" %>
+
+	<%aufgaben =  @todo.count %>
+<h2> zu erledigen (<%= aufgaben %> 
+
+	<%if aufgaben > 1%>
+	Aufgaben
+	<% else %>
+	Aufgabe
+	<% end%>, 
+	<%zeit =  @todo.sum("duration") %>
+	<%= zeit%>
+	<% if zeit >1 %> 
+	Stunden)
+	<% else %>
+	Stunde)
+	<% end %>
+</h2>
+
 <%= render partial: "table", locals: {tasks: @todo, css_class: "todo"} %>
-<h2>Done (<%= pluralize(@done.count, "Task") %>, <%= pluralize(@done.sum("duration"), "Hour") %>)</h2>
+<%aufgaben2 =  @done.count %>
+<h2>Erledigt (<%= aufgaben2 %> 
+
+	<%if aufgaben2 > 1%>
+	Aufgaben
+	<% else %>
+	Aufgabe
+	<% end%>, 
+	<%zeit2 =  @done.sum("duration") %>
+	<%= zeit2%>
+	<% if zeit2 >1 %> 
+	Stunden)
+	<% else %>
+	Stunde)
+	<% end %>
+</h2>
 
 <%= render partial: "table", locals: {tasks: @done, css_class: "done"} %>
 <br>
